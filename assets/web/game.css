@@ -1,0 +1,131 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    margin-top: 0.5px
+}
+
+@media (orientation: landscape) {
+    html,
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+body,
+body * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.game,
+.game_container {
+    display: block;
+    touch-action: none;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+@media (orientation: landscape) {
+    .game,
+    .game_container {
+        width: 100vw;
+        height: calc(100vh - env(safe-area-inset-bottom, 0px));
+    }
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.flipped {
+    transform: scaleY(-1);
+}
+
+/* Roadster mod: on-screen touch buttons */
+.touch-controls {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    font-family: "Courier New", monospace;
+}
+
+.tc-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border: 2px solid rgba(252, 252, 252, 0.55);
+    border-radius: 14px;
+    background: rgba(0, 0, 40, 0.35);
+    color: rgba(252, 252, 252, 0.85);
+    font-size: 26px;
+    font-weight: bold;
+    pointer-events: auto;
+    touch-action: none;
+    box-sizing: border-box;
+}
+
+.tc-pressed {
+    background: rgba(168, 0, 0, 0.6);
+    border-color: #fc5454;
+    color: #fcfcfc;
+}
+
+/* Arrows on the left in a WASD layout */
+.tc-left {
+    left: calc(16px + env(safe-area-inset-left, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+.tc-down {
+    left: calc(88px + env(safe-area-inset-left, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+.tc-right {
+    left: calc(160px + env(safe-area-inset-left, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+.tc-up {
+    left: calc(88px + env(safe-area-inset-left, 0px));
+    bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Actions on the right */
+.tc-shift {
+    right: calc(16px + env(safe-area-inset-right, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 76px;
+    height: 76px;
+}
+
+.tc-space {
+    right: calc(104px + env(safe-area-inset-right, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 76px;
+    height: 76px;
+}
+
+.tc-shift,
+.tc-space {
+    font-size: 14px;
+}
+
+.tc-driving .tc-shift {
+    border-color: rgba(84, 84, 252, 0.8);
+}
+
